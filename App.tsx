@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import * as SplashScreen from "expo-splash-screen";
 import Navigation from "./src/navigations";
+import { ThemeProvider } from "styled-components/native";
+import theme from "./src/theme";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -26,5 +28,9 @@ export default function App() {
     return null;
   }
 
-  return <Navigation />;
+  return (
+    <ThemeProvider theme={theme}>
+      <Navigation />
+    </ThemeProvider>
+  );
 }

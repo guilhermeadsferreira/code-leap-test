@@ -1,8 +1,8 @@
 import React, { FC } from "react";
-import { View } from "react-native";
+import { Container } from "./styles";
 
 const Signup: FC = () => {
-  return <View style={{ backgroundColor: "green", flex: 1 }} />;
+  return <Container />;
 };
 
 export default Signup;

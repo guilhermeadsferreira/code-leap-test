@@ -4,10 +4,10 @@
     "slug": "code-leap-test",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon_codeleap.png",
+    "icon": "./assets/images/icon_codeleap.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/codeleap_logo_black.png",
+      "image": "./assets/images/codeleap_logo_black.png",
       "resizeMode": "center",
       "backgroundColor": "#FFFFFFFF"
     },
@@ -22,12 +22,12 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/images/favicon.png"
     }
   }
 }

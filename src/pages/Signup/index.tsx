@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react";
-import { Typography, Input } from "~/components";
+import { Typography, Input, Button } from "~/components";
 import { Box, Container } from "./styles";
 
 const Signup: FC = () => {
@@ -18,6 +18,15 @@ const Signup: FC = () => {
           value={username}
           onChangeText={setUsername}
         />
+        <Button
+          onPress={() => {}}
+          disabled={!username}
+          alignSelf="flex-end"
+          marginTop={3}
+          width={23}
+        >
+          ENTER
+        </Button>
       </Box>
     </Container>
   );

@@ -7,4 +7,4 @@ export type TypographyProps = {
   children?: React.ReactNode;
 };
 
-export type TextProps = Required<Omit<TypographyProps, "children">>;
+export type TextProps = Required<OmitChildren<TypographyProps>>;

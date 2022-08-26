@@ -6,9 +6,18 @@ const Typography: React.FC<TypographyProps> = ({
   children,
   font = "regular",
   size = "16",
+  color = "black",
+  marginTop = 0,
+  marginBottom = 0,
 }) => {
   return (
-    <Text font={font} size={size}>
+    <Text
+      font={font}
+      size={size}
+      color={color}
+      marginTop={marginTop}
+      marginBottom={marginBottom}
+    >
       {children}
     </Text>
   );

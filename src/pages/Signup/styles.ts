@@ -8,3 +8,12 @@ export const Container = styled.View`
     align-items: center;
   `}
 `;
+
+export const Box = styled.View`
+  ${({ theme }) => `
+    width: ${theme.width(90)};
+    padding-vertical: ${theme.height(2.5)};
+    padding-horizontal: ${theme.width(4)};
+    background-color: ${theme.colors.white};
+  `}
+`;

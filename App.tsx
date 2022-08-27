@@ -4,6 +4,7 @@ import Navigation from "./src/navigations";
 import { ThemeProvider } from "styled-components/native";
 import theme from "./src/theme";
 import { useFonts } from "expo-font";
+import { ReduxProvider } from "~/redux/store";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -42,7 +43,9 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Navigation />
+      <ReduxProvider>
+        <Navigation />
+      </ReduxProvider>
     </ThemeProvider>
   );
 }

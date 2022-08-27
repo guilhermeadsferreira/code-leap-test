@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Signup } from "~/pages";
+import { Signup, Home } from "~/pages";
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<MainStackParams>();
 
 const MainStack: FC = () => {
   return (
@@ -13,6 +13,7 @@ const MainStack: FC = () => {
       }}
     >
       <Stack.Screen name="SIGN_UP" component={Signup} />
+      <Stack.Screen name="HOME" component={Home} />
     </Stack.Navigator>
   );
 };

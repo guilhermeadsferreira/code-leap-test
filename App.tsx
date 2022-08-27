@@ -5,6 +5,8 @@ import { ThemeProvider } from "styled-components/native";
 import theme from "./src/theme";
 import { useFonts } from "expo-font";
 import { ReduxProvider } from "~/redux/store";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { StatusBar } from "expo-status-bar";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -44,7 +46,10 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <ReduxProvider>
-        <Navigation />
+        <SafeAreaProvider>
+          <StatusBar style="light" />
+          <Navigation />
+        </SafeAreaProvider>
       </ReduxProvider>
     </ThemeProvider>
   );

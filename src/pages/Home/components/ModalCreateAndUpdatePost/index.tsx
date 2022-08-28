@@ -1,6 +1,12 @@
 import React, { FC, useCallback } from "react";
-import { Button, Input, Typography, InputTextArea } from "~/components";
-import { Modal, Container } from "./styles";
+import {
+  Button,
+  Input,
+  Typography,
+  InputTextArea,
+  BottomModal,
+} from "~/components";
+import { Container } from "./styles";
 import { Formik } from "formik";
 import { schema, getFormInitialValues } from "./form";
 import { ModalProps } from "./ModalCreateAndUpdatePost.types";
@@ -11,7 +17,7 @@ import { ScrollView, View } from "react-native";
 const ModalCreateAndUpdatePost: FC<ModalProps> = ({
   data,
   closeModal,
-  onCreatedPost,
+  refetchPosts,
 }) => {
   const [createPost] = useCreatePostMutation();
   const [updatePost] = useUpdatePostMutation();
@@ -40,15 +46,15 @@ const ModalCreateAndUpdatePost: FC<ModalProps> = ({
         });
       }
 
-      onCreatedPost();
+      refetchPosts();
       closeModal();
     },
     [data]
   );
 
   return (
-    <Modal
-      isVisible={data.show}
+    <BottomModal
+      show={data.show}
       onBackButtonPress={closeModal}
       onBackdropPress={closeModal}
     >
@@ -105,7 +111,7 @@ const ModalCreateAndUpdatePost: FC<ModalProps> = ({
           </Container>
         )}
       </Formik>
-    </Modal>
+    </BottomModal>
   );
 };
 

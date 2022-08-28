@@ -15,6 +15,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { api } from "~/services/api";
+import { middlewareRejectedActions } from "./middlewares";
 
 const persistConfig = {
   key: "root",
@@ -31,7 +32,7 @@ const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(api.middleware),
+    }).concat([api.middleware, middlewareRejectedActions]),
 });
 const persistor = persistStore(store);
 

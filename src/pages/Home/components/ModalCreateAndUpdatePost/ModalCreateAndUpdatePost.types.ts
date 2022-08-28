@@ -6,5 +6,5 @@ export type ModalProps = {
     post?: Post;
   };
   closeModal: () => void;
-  onCreatedPost: () => void;
+  refetchPosts: () => void;
 };

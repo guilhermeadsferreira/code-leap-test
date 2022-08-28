@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { FC, ReactNode } from "react";
 import Loading from "../Loading";
 import { Container } from "./styles";
 
@@ -7,7 +7,7 @@ type Props = {
   children: ReactNode;
 };
 
-const LoadingData: React.FC<Props> = ({ loading, children }) => {
+const LoadingData: FC<Props> = ({ loading, children }) => {
   return (
     <>
       {loading ? (

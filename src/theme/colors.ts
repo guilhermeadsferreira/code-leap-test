@@ -4,4 +4,5 @@ export default {
   grayHigh: "#777777",
   black: "#000000",
   white: "#FFFFFF",
+  feedbackError: "#E00004",
 };

@@ -1,14 +1,16 @@
-import React from "react";
+import React, { FC } from "react";
+import Loading from "../Loading";
 import Typography from "../Typography";
 import { ButtonProps } from "./Button.types";
 import { Touchable } from "./styles";
 
-const Button: React.FC<ButtonProps> = ({
+const Button: FC<ButtonProps> = ({
   children,
   disabled,
   alignSelf = "auto",
   marginTop = 0,
   width,
+  loading,
   ...rest
 }) => {
   return (
@@ -19,9 +21,13 @@ const Button: React.FC<ButtonProps> = ({
       width={width}
       {...rest}
     >
-      <Typography color="white" font="semiBold" {...rest}>
-        {children}
-      </Typography>
+      {loading ? (
+        <Loading color="white" />
+      ) : (
+        <Typography color="white" font="semiBold" {...rest}>
+          {children}
+        </Typography>
+      )}
     </Touchable>
   );
 };

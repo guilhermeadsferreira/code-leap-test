@@ -11,4 +11,9 @@ export default {
   "32": getResponsivePx(32),
   "40": getResponsivePx(40),
   "48": getResponsivePx(48),
+  "56": getResponsivePx(56),
+  "64": getResponsivePx(64),
+  "72": getResponsivePx(72),
+  "80": getResponsivePx(80),
+  "88": getResponsivePx(88),
 };

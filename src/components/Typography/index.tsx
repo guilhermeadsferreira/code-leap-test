@@ -1,8 +1,8 @@
-import React from "react";
+import React, { FC } from "react";
 import { Text } from "./styles";
 import { TypographyProps } from "./Typography.types";
 
-const Typography: React.FC<TypographyProps> = ({
+const Typography: FC<TypographyProps> = ({
   children,
   font = "regular",
   size = "16",

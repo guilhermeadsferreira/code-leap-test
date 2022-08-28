@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { FC, useContext } from "react";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Feather from "@expo/vector-icons/Feather";
 import {
@@ -9,7 +9,7 @@ import {
 import { ThemeContext } from "styled-components/native";
 import { Touchable } from "./styles";
 
-const Icon: React.FC<IconProps> = ({
+const Icon: FC<IconProps> = ({
   font = "material",
   color = "white",
   name,

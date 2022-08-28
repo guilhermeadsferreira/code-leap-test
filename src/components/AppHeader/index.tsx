@@ -1,9 +1,9 @@
-import React from "react";
+import React, { FC } from "react";
 import Typography from "../Typography";
 import { Container } from "./styles";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-const AppHeader: React.FC = () => {
+const AppHeader: FC = () => {
   const insets = useSafeAreaInsets();
 
   return (

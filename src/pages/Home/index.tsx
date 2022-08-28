@@ -1,39 +1,74 @@
-import React, { useEffect, useState } from "react";
+import React, { FC, useState } from "react";
 import { FlatList } from "react-native";
-import { useListPostsQuery } from "~/actions";
-import { AppHeader, Post, Loading } from "~/components";
+import { useLazyListPostsQuery } from "~/actions";
+import { AppHeader, Post, Loading, Icon } from "~/components";
 import LoadingData from "~/components/LoadingData";
-import { ListPostsResponse } from "~/redux/reducers/post/types";
-import { Wrapper } from "./styles";
+import { useListPagination } from "~/hooks";
+import { Post as PostType } from "~/redux/reducers/post/types";
+import ModalCreateAndUpdatePost from "./components/ModalCreateAndUpdatePost";
+import { ModalProps } from "./Home.types";
+import { Wrapper, TouchableCreateNewPost } from "./styles";
 
-const Home: React.FC = () => {
-  const [next, setNext] = useState("");
-  const [results, setResults] = useState<ListPostsResponse["results"]>([]);
-  const { data, isLoading, isFetching } = useListPostsQuery({ next });
+//TESTAR NO ANDROID
+//MUDAR FONTE
+//VER A QUESTAO DO CHILDREN
+//TOAST
+//TRATAMENTO DE ERRO, SUCESSO, INTERCEPTORS ?
 
-  useEffect(() => {
-    if (data?.results) {
-      setResults((prev) => [...prev, ...data.results]);
-    }
-  }, [data]);
+const Home: FC = () => {
+  const {
+    loading,
+    loadingMoreData,
+    results,
+    handleFetchFirstPage,
+    handleNextPage,
+  } = useListPagination<PostType>(useLazyListPostsQuery);
+  const [modalDataCreateAndUpdatePost, setModalDataCreateAndUpdatePost] =
+    useState<ModalProps>({
+      show: false,
+    });
 
   return (
     <Wrapper>
       <AppHeader />
-      <LoadingData loading={isLoading}>
+      <ModalCreateAndUpdatePost
+        data={modalDataCreateAndUpdatePost}
+        closeModal={() => {
+          setModalDataCreateAndUpdatePost({
+            show: false,
+          });
+        }}
+        onCreatedPost={handleFetchFirstPage}
+      />
+      <TouchableCreateNewPost
+        onPress={() =>
+          setModalDataCreateAndUpdatePost({
+            show: true,
+          })
+        }
+      >
+        <Icon name="add" />
+      </TouchableCreateNewPost>
+      <LoadingData loading={loading}>
         <FlatList
-          data={results}
-          renderItem={({ item }) => <Post post={item} />}
+          data={results.data}
+          renderItem={({ item }) => (
+            <Post
+              post={item}
+              handleUpdatePost={(post) =>
+                setModalDataCreateAndUpdatePost({
+                  show: true,
+                  post,
+                })
+              }
+            />
+          )}
           contentContainerStyle={{
             paddingTop: "5%",
           }}
-          onEndReached={() => {
-            if (!isLoading && data?.next) {
-              setNext(data.next);
-            }
-          }}
+          onEndReached={handleNextPage}
           onEndReachedThreshold={0.2}
-          ListFooterComponent={isFetching ? <Loading /> : <></>}
+          ListFooterComponent={loadingMoreData ? <Loading /> : <></>}
         />
       </LoadingData>
     </Wrapper>

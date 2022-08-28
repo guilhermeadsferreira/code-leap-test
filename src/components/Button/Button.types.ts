@@ -7,6 +7,7 @@ export type ButtonProps = {
   alignSelf?: "auto" | "flex-start" | "flex-end";
   marginTop?: number;
   width?: number;
+  loading?: boolean;
 } & TouchableOpacityProps &
   TypographyProps;
 

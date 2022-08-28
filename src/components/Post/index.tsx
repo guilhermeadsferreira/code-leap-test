@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import Icon from "../Icon";
 import { Wrapper, Header, Title, WrapperIcons, Details, Row } from "./styles";
 import { useAppSelector } from "~/redux/hooks";
@@ -6,7 +6,7 @@ import { PostProps } from "./Post.types";
 import Typography from "../Typography";
 import { getDistanceBetweenAnyDateAndNowDate } from "~/utils/data";
 
-const Post: React.FC<PostProps> = ({ post }) => {
+const Post: FC<PostProps> = ({ post, handleUpdatePost }) => {
   const username = useAppSelector((state) => state.user.username);
   const itsMyPost = post.username === username;
   const formattedCreatedDate = `${getDistanceBetweenAnyDateAndNowDate(
@@ -26,6 +26,7 @@ const Post: React.FC<PostProps> = ({ post }) => {
               font="feather"
               size={6}
               marginLeft={2}
+              onPress={() => handleUpdatePost(post)}
             />
           </WrapperIcons>
         )}

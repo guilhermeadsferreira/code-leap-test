@@ -16,6 +16,6 @@ export const TextInput = styled.TextInput`
     padding-right: ${theme.width(0.5)};
     min-height: ${theme.sizes[40]};
     border-radius: ${theme.radius[4]};
-    border-color: ${theme.colors.grayMedium};
+    border-color: ${theme.colors.grayHigh};
   `}
 `;

@@ -1,5 +1,5 @@
 import styled from "styled-components/native";
-import { ContainerProps } from "./Header.types";
+import { ContainerProps } from "./AppHeader";
 
 const getHeaderPaddingTop = (paddingTop: number) => {
   if (paddingTop < 30) {

@@ -3,7 +3,7 @@ import Typography from "../Typography";
 import { Container } from "./styles";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-const Header: React.FC = () => {
+const AppHeader: React.FC = () => {
   const insets = useSafeAreaInsets();
 
   return (
@@ -15,4 +15,4 @@ const Header: React.FC = () => {
   );
 };
 
-export default Header;
+export default AppHeader;

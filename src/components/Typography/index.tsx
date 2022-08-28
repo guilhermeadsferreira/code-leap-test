@@ -9,6 +9,7 @@ const Typography: React.FC<TypographyProps> = ({
   color = "black",
   marginTop = 0,
   marginBottom = 0,
+  ...rest
 }) => {
   return (
     <Text
@@ -17,6 +18,7 @@ const Typography: React.FC<TypographyProps> = ({
       color={color}
       marginTop={marginTop}
       marginBottom={marginBottom}
+      {...rest}
     >
       {children}
     </Text>

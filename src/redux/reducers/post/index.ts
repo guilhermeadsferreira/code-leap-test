@@ -1,9 +1,9 @@
 import { api } from "~/services/api";
-import { Post } from "./types";
+import { ResponsePost } from "./types";
 
 export const post = api.injectEndpoints({
   endpoints: (build) => ({
-    listPosts: build.query<Post[], void>({
+    listPosts: build.query<ResponsePost, void>({
       query: () => "",
     }),
     // createPost: build.mutation<string, { payload: Partial<TGameRequest>; userId: string }>({

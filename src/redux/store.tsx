@@ -14,11 +14,13 @@ import rootReducers from "./reducers";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
+import { api } from "~/services/api";
 
 const persistConfig = {
   key: "root",
   version: 1,
   storage: AsyncStorage,
+  blacklist: [api.reducerPath],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducers);
@@ -29,7 +31,7 @@ const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }),
+    }).concat(api.middleware),
 });
 const persistor = persistStore(store);
 

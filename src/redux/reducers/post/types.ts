@@ -5,3 +5,10 @@ export type Post = {
   title: string;
   content: string;
 };
+
+export type ResponsePost = {
+  count: number;
+  next: string;
+  previous: string;
+  results: Post[];
+};

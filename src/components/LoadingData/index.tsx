@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
-import { Container, LoadingIndicator } from "./styles";
+import Loading from "../Loading";
+import { Container } from "./styles";
 
 type Props = {
   loading: boolean;
@@ -11,7 +12,7 @@ const LoadingData: React.FC<Props> = ({ loading, children }) => {
     <>
       {loading ? (
         <Container>
-          <LoadingIndicator />
+          <Loading size="large" />
         </Container>
       ) : (
         children

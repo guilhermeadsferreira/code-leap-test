@@ -1,10 +1,10 @@
 import { api } from "~/services/api";
-import { ResponsePost } from "./types";
+import { ListPostsParams, ListPostsResponse } from "./types";
 
 export const post = api.injectEndpoints({
   endpoints: (build) => ({
-    listPosts: build.query<ResponsePost, void>({
-      query: () => "",
+    listPosts: build.query<ListPostsResponse, ListPostsParams>({
+      query: ({ next }) => next ?? "",
     }),
     // createPost: build.mutation<string, { payload: Partial<TGameRequest>; userId: string }>({
     //   invalidatesTags: ['Game'],

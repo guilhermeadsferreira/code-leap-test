@@ -6,9 +6,13 @@ export type Post = {
   content: string;
 };
 
-export type ResponsePost = {
+export type ListPostsResponse = {
   count: number;
   next: string;
   previous: string;
   results: Post[];
+};
+
+export type ListPostsParams = {
+  next?: string;
 };

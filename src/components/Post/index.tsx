@@ -1,15 +1,20 @@
 import React from "react";
 import Icon from "../Icon";
-import { Container, Header, Title, WrapperIcons } from "./styles";
+import { Wrapper, Header, Title, WrapperIcons, Details, Row } from "./styles";
 import { useAppSelector } from "~/redux/hooks";
 import { PostProps } from "./Post.types";
+import Typography from "../Typography";
+import { getDistanceBetweenAnyDateAndNowDate } from "~/utils/data";
 
 const Post: React.FC<PostProps> = ({ post }) => {
   const username = useAppSelector((state) => state.user.username);
   const itsMyPost = post.username === username;
+  const formattedCreatedDate = `${getDistanceBetweenAnyDateAndNowDate(
+    post.created_datetime
+  )} ago`;
 
   return (
-    <Container>
+    <Wrapper>
       <Header>
         <Title>{post.title}</Title>
         {itsMyPost && (
@@ -25,7 +30,16 @@ const Post: React.FC<PostProps> = ({ post }) => {
           </WrapperIcons>
         )}
       </Header>
-    </Container>
+      <Details>
+        <Row>
+          <Typography font="bold" color="grayHigh">
+            @{post.username}
+          </Typography>
+          <Typography color="grayHigh">{formattedCreatedDate}</Typography>
+        </Row>
+        <Typography marginTop={1.5}>{post.content}</Typography>
+      </Details>
+    </Wrapper>
   );
 };
 

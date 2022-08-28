@@ -6,3 +6,4 @@ export { default as AppHeader } from "./AppHeader";
 export { default as LoadingData } from "./LoadingData";
 export { default as Post } from "./Post";
 export { default as Icon } from "./Icon";
+export { default as Loading } from "./Loading";

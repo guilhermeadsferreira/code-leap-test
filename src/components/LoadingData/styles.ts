@@ -5,8 +5,3 @@ export const Container = styled.View`
   justify-content: center;
   align-items: center;
 `;
-
-export const LoadingIndicator = styled.ActivityIndicator.attrs(({ theme }) => ({
-  size: "large",
-  color: theme.colors.black,
-}))``;

@@ -1,6 +1,6 @@
 import { Post } from "~/redux/reducers/post/types";
 
-export type ModalProps = {
+export type ModalData = {
   show: boolean;
   post?: Post;
 };

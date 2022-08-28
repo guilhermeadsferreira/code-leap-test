@@ -6,14 +6,13 @@ import LoadingData from "~/components/LoadingData";
 import { useListPagination } from "~/hooks";
 import { Post as PostType } from "~/redux/reducers/post/types";
 import ModalCreateAndUpdatePost from "./components/ModalCreateAndUpdatePost";
-import { ModalProps } from "./Home.types";
+import ModalDeletePost from "./components/ModalDeletePost";
+import { ModalData } from "./Home.types";
 import { Wrapper, TouchableCreateNewPost } from "./styles";
 
 //TESTAR NO ANDROID
 //MUDAR FONTE
 //VER A QUESTAO DO CHILDREN
-//TOAST
-//TRATAMENTO DE ERRO, SUCESSO, INTERCEPTORS ?
 
 const Home: FC = () => {
   const {
@@ -23,26 +22,35 @@ const Home: FC = () => {
     handleFetchFirstPage,
     handleNextPage,
   } = useListPagination<PostType>(useLazyListPostsQuery);
-  const [modalDataCreateAndUpdatePost, setModalDataCreateAndUpdatePost] =
-    useState<ModalProps>({
-      show: false,
-    });
+  const [postModalData, setPostModalData] = useState<ModalData>({
+    show: false,
+  });
+  const [deletePostModalData, setDeletePostModalData] = useState<ModalData>({
+    show: false,
+  });
 
   return (
     <Wrapper>
       <AppHeader />
       <ModalCreateAndUpdatePost
-        data={modalDataCreateAndUpdatePost}
+        data={postModalData}
         closeModal={() => {
-          setModalDataCreateAndUpdatePost({
+          setPostModalData({
             show: false,
           });
         }}
-        onCreatedPost={handleFetchFirstPage}
+        refetchPosts={handleFetchFirstPage}
+      />
+      <ModalDeletePost
+        data={deletePostModalData}
+        closeModal={() => {
+          setDeletePostModalData({ show: false });
+        }}
+        refetchPosts={handleFetchFirstPage}
       />
       <TouchableCreateNewPost
         onPress={() =>
-          setModalDataCreateAndUpdatePost({
+          setPostModalData({
             show: true,
           })
         }
@@ -51,16 +59,19 @@ const Home: FC = () => {
       </TouchableCreateNewPost>
       <LoadingData loading={loading}>
         <FlatList
-          data={results.data}
+          data={results?.data}
           renderItem={({ item }) => (
             <Post
               post={item}
-              handleUpdatePost={(post) =>
-                setModalDataCreateAndUpdatePost({
+              handleUpdatePost={(post) => {
+                setPostModalData({
                   show: true,
                   post,
-                })
-              }
+                });
+              }}
+              handleDeletePost={(post) => {
+                setDeletePostModalData({ show: true, post });
+              }}
             />
           )}
           contentContainerStyle={{

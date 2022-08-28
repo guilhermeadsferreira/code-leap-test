@@ -5,4 +5,5 @@ export const {
   useLazyListPostsQuery,
   useCreatePostMutation,
   useUpdatePostMutation,
+  useDeletePostMutation,
 } = post;

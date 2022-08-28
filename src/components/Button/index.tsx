@@ -9,22 +9,28 @@ const Button: FC<ButtonProps> = ({
   disabled,
   alignSelf = "auto",
   marginTop = 0,
+  marginLeft = 0,
   width,
   loading,
+  isTransparent,
   ...rest
 }) => {
+  const contentColor = isTransparent ? "black" : "white";
+
   return (
     <Touchable
       disabled={disabled}
       marginTop={marginTop}
+      marginLeft={marginLeft}
       alignSelf={alignSelf}
       width={width}
+      isTransparent={isTransparent}
       {...rest}
     >
       {loading ? (
-        <Loading color="white" />
+        <Loading color={contentColor} />
       ) : (
-        <Typography color="white" font="semiBold" {...rest}>
+        <Typography color={contentColor} font="semiBold">
           {children}
         </Typography>
       )}

@@ -24,6 +24,12 @@ export const post = api.injectEndpoints({
         url: `/${id}/`,
       }),
     }),
+    deletePost: build.mutation<string, { id: number }>({
+      query: ({ id }) => ({
+        method: "DELETE",
+        url: `/${id}/`,
+      }),
+    }),
   }),
   overrideExisting: false,
 });

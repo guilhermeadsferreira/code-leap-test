@@ -6,7 +6,7 @@ import { PostProps } from "./Post.types";
 import Typography from "../Typography";
 import { getDistanceBetweenAnyDateAndNowDate } from "~/utils/data";
 
-const Post: FC<PostProps> = ({ post, handleUpdatePost }) => {
+const Post: FC<PostProps> = ({ post, handleUpdatePost, handleDeletePost }) => {
   const username = useAppSelector((state) => state.user.username);
   const itsMyPost = post.username === username;
   const formattedCreatedDate = `${getDistanceBetweenAnyDateAndNowDate(
@@ -19,7 +19,11 @@ const Post: FC<PostProps> = ({ post, handleUpdatePost }) => {
         <Title>{post.title}</Title>
         {itsMyPost && (
           <WrapperIcons>
-            <Icon name="delete-forever" color="white" />
+            <Icon
+              name="delete-forever"
+              color="white"
+              onPress={() => handleDeletePost(post)}
+            />
             <Icon
               name="edit"
               color="white"

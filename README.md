@@ -1,5 +1,7 @@
 # CodeLeap Engineering Test
 
+https://user-images.githubusercontent.com/59057060/187120617-c6809cc8-fad4-4f50-9439-d745b42521d9.mp4
+
 ### Setup Environment
 
 Project created with Expo.[ See official docs](https://docs.expo.dev/) to set up the environment.
@@ -46,6 +48,7 @@ a
 - React Native Modal
 - React Native Responsive Font Size
 - Styled Components
+
 
 ### App Screenshots
 

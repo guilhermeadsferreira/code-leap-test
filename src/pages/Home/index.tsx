@@ -1,18 +1,13 @@
 import React, { FC, useState } from "react";
 import { FlatList } from "react-native";
 import { useLazyListPostsQuery } from "~/actions";
-import { AppHeader, Post, Loading, Icon } from "~/components";
-import LoadingData from "~/components/LoadingData";
+import { AppHeader, Post, Loading, Icon, LoadingData } from "~/components";
 import { useListPagination } from "~/hooks";
 import { Post as PostType } from "~/redux/reducers/post/types";
 import ModalCreateAndUpdatePost from "./components/ModalCreateAndUpdatePost";
 import ModalDeletePost from "./components/ModalDeletePost";
 import { ModalData } from "./Home.types";
 import { Wrapper, TouchableCreateNewPost } from "./styles";
-
-//TESTAR NO ANDROID
-//MUDAR FONTE
-//VER A QUESTAO DO CHILDREN
 
 const Home: FC = () => {
   const {

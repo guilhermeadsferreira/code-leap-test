@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import * as SplashScreen from "expo-splash-screen";
-import Navigation from "./src/navigations";
+import Navigation from "~/navigations";
 import { ThemeProvider } from "styled-components/native";
-import theme from "./src/theme";
+import theme from "~/theme";
 import { useFonts } from "expo-font";
 import { ReduxProvider } from "~/redux/store";
 import { SafeAreaProvider } from "react-native-safe-area-context";
